@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOLUTION | Minecraft Clan</title>
+  <meta name="description" content="Официальный сайт клана SOLUTION. Легитная игра, регламент проверок на читы и анкета на вступление.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%2312161f'/><text x='50' y='65' font-size='46' font-weight='700' fill='%23e5e7eb' text-anchor='middle' font-family='sans-serif'>S</text></svg>">
+</head>
+<body>
+  <!-- Subtle Ambient Canvas -->
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <a href="#home" class="logo" onclick="switchTab('home')">
+        <span class="logo-mark">S</span>
+        <div class="logo-text">
+          <span class="brand-title">SOLUTION</span>
+          <span class="brand-badge">CLAN</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="main-nav">
+        <button class="nav-item active" data-tab="home">Главная</button>
+        <button class="nav-item" data-tab="cheat-check">
+          Проверка на читы
+          <span class="nav-pill">AnyDesk</span>
+        </button>
+        <button class="nav-item" data-tab="apply">
+          Анкета
+          <span class="nav-pill nav-pill-active">Набор</span>
+        </button>
+        <button class="nav-item" data-tab="rules">Регламент</button>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary btn-sm" onclick="switchTab('apply')">Подать заявку</button>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- ================= TAB: HOME ================= -->
+    <section id="tab-home" class="tab-pane active">
+      <div class="container hero">
+        <div class="hero-chip">
+          <span class="chip-status"></span>
+          <span>100% Legit Minecraft Community</span>
+        </div>
+
+        <h1 class="hero-title">SOLUTION</h1>
+
+        <p class="hero-description">
+          Клан с фокусом на честную игру и дисциплину. Мы не используем читы, макросы и софт — исход любого файта решает только скилл и командная сыгранность.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" onclick="switchTab('apply')">Вступить в клан</button>
+          <button class="btn btn-outline" onclick="switchTab('cheat-check')">Регламент проверки ПК</button>
+        </div>
+
+        <!-- Metrics Bar -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <span class="metric-val">100%</span>
+            <span class="metric-label">Легитный состав</span>
+            <span class="metric-sub">Регулярный аудит через AnyDesk</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">0</span>
+            <span class="metric-label">Банов за софт</span>
+            <span class="metric-sub">Чистая история на серверах</span>
+          </div>
+          <div class="metric-card">
+            <span class="metric-val">AnyDesk</span>
+            <span class="metric-label">Метод проверки</span>
+            <span class="metric-sub">ShellBags, Everything, Journal</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Principles Section -->
+      <div class="container principles-section">
+        <div class="section-label">ПРИНЦИПЫ</div>
+        <h2 class="section-heading">Честная игра без компромиссов</h2>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-num">01</div>
+            <h3>Никакого стороннего софта</h3>
+            <p>Абсолютный запрет на KillAura, Velocity, AutoTotem, X-Ray, скрипты, инжекторы и макросы для мышей. Играем исключительно чистыми руками.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-num">02</div>
+            <h3>Открытые проверки ПК</h3>
+            <p>Каждый участник клана обязан в любой момент предоставить доступ к экрану через AnyDesk для сканирования системы на следы запрещенных файлов.</p>
+          </div>
+
+          <div class="card">
+            <div class="card-num">03</div>
+            <h3>Дисциплина и командный PvP</h3>
+            <p>Уважение к сокланам, четкая координация в дискорде, совместные тренировки таймингов и тактики на кланварах.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: CHEAT CHECK ================= -->
+    <section id="tab-cheat-check" class="tab-pane">
+      <div class="container content-container">
+        <div class="section-label">БЕЗОПАСНОСТЬ И АУДИТ</div>
+        <h2 class="section-heading">Проверка на читы</h2>
+        <p class="section-subheading">
+          Перед принятием в клан и во время спорных ситуаций проводится обязательная проверка компьютера. Ниже собраны официальные утилиты, которые понадобятся проверяющему.
+        </p>
+
+        <!-- Warning Note -->
+        <div class="notice-box">
+          <div class="notice-title">Внимание при вызове на проверку:</div>
+          <p>
+            Не закрывайте игру, не очищайте корзину и не перезагружайте компьютер. Запуск CCleaner, удаление файлов или выход из игры расцениваются как отказ от проверки и влекут за собой моментальный черный список.
+          </p>
+        </div>
+
+        <!-- Software List -->
+        <h3 class="group-title">Официальные утилиты для скачивания</h3>
+        <div class="soft-list">
+          <!-- AnyDesk -->
+          <div class="soft-row soft-highlight">
+            <div class="soft-info">
+              <div class="soft-title-wrap">
+                <span class="soft-title">AnyDesk</span>
+                <span class="badge badge-accent">Обязательно</span>
+              </div>
+              <p class="soft-desc">Программа для безопасного удаленного подключения. Вы контролируете курсор и можете прервать сеанс в любую секунду.</p>
+            </div>
+            <div class="soft-btn-wrap">
+              <a href="https://anydesk.com/ru/downloads/windows" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-primary">
+                Скачать с anydesk.com
+              </a>
+            </div>
+          </div>
+
+          <!-- ShellBagsView / Shellbag Analyzer -->
+          <div class="soft-row">
+            <div class="soft-info">
+              <div class="soft-title-wrap">
+                <span class="soft-title">ShellBagsView / Shellbag Analyzer</span>
+                <span class="badge">Обязательно</span>
+              </div>
+              <p class="soft-desc">Сканирует историю папок в реестре Windows. Показывает открывавшиеся архивы, скрытые папки и удаленные директории.</p>
+            </div>
+            <div class="soft-btn-wrap">
+              <a href="https://www.nirsoft.net/utils/shell_bags_view.html" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                NirSoft ShellBagsView
+              </a>
+              <a href="https://privazer.com/en/download-shellbag-analyzer-shellbag-cleaner.php" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                PrivaZer Analyzer
+              </a>
+            </div>
+          </div>
+
+          <!-- Everything -->
+          <div class="soft-row">
+            <div class="soft-info">
+              <div class="soft-title-wrap">
+                <span class="soft-title">Everything Search</span>
+                <span class="badge">Обязательно</span>
+              </div>
+              <p class="soft-desc">Мгновенный поиск файлов по NTFS-журналу дисков. Позволяет быстро найти спрятанные dll, jar, модификации и конфигурации софта.</p>
+            </div>
+            <div class="soft-btn-wrap">
+              <a href="https://www.voidtools.com/downloads/" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                Voidtools Everything
+              </a>
+            </div>
+          </div>
+
+          <!-- System Informer / Process Hacker -->
+          <div class="soft-row">
+            <div class="soft-info">
+              <div class="soft-title-wrap">
+                <span class="soft-title">System Informer (Process Hacker)</span>
+                <span class="badge badge-neutral">Дополнительно</span>
+              </div>
+              <p class="soft-desc">Инспектирует активный процесс Minecraft (javaw.exe), загруженные DLL-библиотеки и дескрипторы памяти.</p>
+            </div>
+            <div class="soft-btn-wrap">
+              <a href="https://systeminformer.sourceforge.io/downloads.php" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                Скачать System Informer
+              </a>
+            </div>
+          </div>
+
+          <!-- USBDeview -->
+          <div class="soft-row">
+            <div class="soft-info">
+              <div class="soft-title-wrap">
+                <span class="soft-title">USBDeview</span>
+                <span class="badge badge-neutral">Дополнительно</span>
+              </div>
+              <p class="soft-desc">Просмотр истории всех когда-либо подключавшихся USB-устройств (флешки, мыши со встроенной макрос-памятью).</p>
+            </div>
+            <div class="soft-btn-wrap">
+              <a href="https://www.nirsoft.net/utils/usb_devices_view.html" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                Скачать USBDeview
+              </a>
+            </div>
+          </div>
+
+          <!-- USN Journal -->
+          <div class="soft-row">
+            <div class="soft-info">
+              <div class="soft-title-wrap">
+                <span class="soft-title">JournalTrace / USN Journal</span>
+                <span class="badge badge-neutral">Дополнительно</span>
+              </div>
+              <p class="soft-desc">Журнал операций файловой системы NTFS. Фиксирует любые попытки очистки или удаления файлов перед проверкой.</p>
+            </div>
+            <div class="soft-btn-wrap">
+              <a href="https://github.com/adversary-intelligence/JournalTrace" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-ghost">
+                GitHub Repository
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Procedure Steps -->
+        <h3 class="group-title">Порядок прохождения проверки</h3>
+        <div class="steps-grid">
+          <div class="step-item">
+            <span class="step-index">01</span>
+            <div class="step-text">
+              <h4>Вызов</h4>
+              <p>Вам дается до 3 минут на ответ и запуск AnyDesk.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-index">02</span>
+            <div class="step-text">
+              <h4>Игра активна</h4>
+              <p>Оставайтесь на сервере, не закрывайте окно игры.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-index">03</span>
+            <div class="step-text">
+              <h4>Код доступа</h4>
+              <p>Отправьте проверяющему 9-значный номер AnyDesk.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <span class="step-index">04</span>
+            <div class="step-text">
+              <h4>Вердикт</h4>
+              <p>При чистом результате вам выдается роль в клане.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: APPLY (ANKETA) ================= -->
+    <section id="tab-apply" class="tab-pane">
+      <div class="container content-container">
+        <div class="section-label">НАБОР В КЛАН</div>
+        <h2 class="section-heading">Анкета кандидата</h2>
+        <p class="section-subheading">
+          Заполните 4 обязательных пункта. Текст справа мгновенно сформируется в аккуратный Markdown, готовый к отправке лидеру или в дискорд.
+        </p>
+
+        <div class="apply-layout">
+          <!-- Form -->
+          <div class="form-panel">
+            <form id="clan-app-form">
+              <!-- Q1 -->
+              <div class="form-group">
+                <label for="field-name">
+                  1. Как тебя зовут? <span class="required">*</span>
+                </label>
+                <input type="text" id="field-name" placeholder="Имя и никнейм в игре" required autocomplete="off">
+              </div>
+
+              <!-- Q2 -->
+              <div class="form-group">
+                <label for="field-age">
+                  2. Сколько тебе лет? <span class="required">*</span>
+                </label>
+                <input type="number" id="field-age" placeholder="Возраст (полных лет)" min="10" max="99" required>
+              </div>
+
+              <!-- Q3 -->
+              <div class="form-group">
+                <label for="field-exp">
+                  3. Как давно ты играешь в майнкрафт? <span class="required">*</span>
+                </label>
+                <textarea id="field-exp" rows="3" placeholder="Стаж, основные сервера и любимые режимы (Анархия, ClanWar, CPvP)" required></textarea>
+              </div>
+
+              <!-- Q4 -->
+              <div class="form-group">
+                <label>
+                  4. Ты готов пройти проверку на читы через AnyDesk? <span class="required">*</span>
+                </label>
+                <div class="radio-options">
+                  <label class="radio-label">
+                    <input type="radio" name="anydesk" value="Да, готов пройти проверку в любой момент" checked>
+                    <span>Да, готов пройти проверку</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="anydesk" value="Готов, но нужно объяснить как это работает">
+                    <span>Готов, но прохожу проверку впервые</span>
+                  </label>
+                  <label class="radio-label">
+                    <input type="radio" name="anydesk" value="Нет, не готов">
+                    <span>Нет, не готов (отказ от проверки)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Optional Contact -->
+              <div class="form-group">
+                <label for="field-contact">Контакт для связи (Discord / Telegram)</label>
+                <input type="text" id="field-contact" placeholder="username#0000 или @telegram">
+              </div>
+
+              <div class="form-actions">
+                <button type="button" id="btn-copy-anketa" class="btn btn-primary btn-block">
+                  Скопировать анкету
+                </button>
+                <button type="reset" id="btn-reset" class="btn btn-ghost btn-block">
+                  Очистить поля
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <!-- Preview -->
+          <div class="preview-panel">
+            <div class="preview-card">
+              <div class="preview-card-header">
+                <span class="preview-title">Предпросмотр сообщения</span>
+                <button type="button" id="btn-quick-copy" class="btn btn-xs btn-outline">Копировать</button>
+              </div>
+
+              <div class="code-box">
+                <pre><code id="markdown-output"># Набор в клан Solution
+*1. Как тебя зовут: [Имя / Ник]
+2. Сколько тебе лет?: [Возраст]
+3. Как давно ты играешь в майнкрафт?: [Стаж]
+4. Ты готов пройти проверку на читы через AnyDesk?: Да, готов пройти проверку в любой момент*</code></pre>
+              </div>
+
+              <div class="instructions-box">
+                <span class="instructions-title">Инструкция:</span>
+                <ol>
+                  <li>Заполните форму слева.</li>
+                  <li>Нажмите <strong>«Скопировать анкету»</strong>.</li>
+                  <li>Вставьте текст в канал набора Discord или в ЛС главе клана.</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TAB: RULES ================= -->
+    <section id="tab-rules" class="tab-pane">
+      <div class="container content-container">
+        <div class="section-label">РЕГЛАМЕНТ</div>
+        <h2 class="section-heading">Кодекс чести клана</h2>
+        <p class="section-subheading">
+          Базовые правила для каждого соклана. Нарушение влечет предупреждение или моментальное исключение.
+        </p>
+
+        <div class="rules-list">
+          <div class="rule-row">
+            <div class="rule-index">01</div>
+            <div class="rule-body">
+              <h4>Запрет читов и нелегитного софта</h4>
+              <p>Использование любых инжекторов, читерских клиентов, модов на X-Ray или макросов на мышь карается перманентным киком из клана.</p>
+            </div>
+          </div>
+
+          <div class="rule-row">
+            <div class="rule-index">02</div>
+            <div class="rule-body">
+              <h4>Обязательная явка на проверку</h4>
+              <p>Отказ от проверки ПК по запросу руководства или администрации турнира приравнивается к признанию использования запрещенного ПО.</p>
+            </div>
+          </div>
+
+          <div class="rule-row">
+            <div class="rule-index">03</div>
+            <div class="rule-body">
+              <h4>Дисциплина в голосовом чате</h4>
+              <p>Никакого флуда, оскорблений и токсичности во время кланваров. Слушаем координатора и держим фокус на игре.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <h3 class="group-title" style="margin-top: 3rem;">Частые вопросы</h3>
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Сколько длится проверка через AnyDesk?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Обычно 5–10 минут. Если утилиты Everything и ShellBagsView скачаны заранее, проверка проходит очень быстро.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Что именно смотрит проверяющий?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Только файлы Minecraft, реестр недавних папок (ShellBags), журнал NTFS и активный процесс javaw.exe. Личные данные, соцсети и браузер никто не открывает.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span>Нужно ли устанавливать софт для проверки?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p>Нет, все программы (ShellBagsView, Everything) портативные (Portable) и запускаются из одного файла без установки в систему.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Clean Minimal Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="footer-logo">SOLUTION</span>
+        <span class="footer-copy">© 2026. Minecraft Legit Clan. Все права защищены.</span>
+      </div>
+      <div class="footer-right">
+        <a href="#home" onclick="switchTab('home')">Главная</a>
+        <a href="#cheat-check" onclick="switchTab('cheat-check')">Проверка на читы</a>
+        <a href="#apply" onclick="switchTab('apply')">Анкета</a>
+        <a href="#rules" onclick="switchTab('rules')">Регламент</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toast-msg">Анкета скопирована в буфер обмена</span>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
